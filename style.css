@@ -1,0 +1,169 @@
+/* 
+  UI/UX Design System 
+  Designed with Modern Glassmorphism & Smooth Interactions 
+*/
+
+:root {
+    --primary-color: #FF477E;
+    --primary-hover: #FF2A6D;
+    --text-main: #2D3748;
+    --text-muted: #718096;
+    --bg-gradient-1: #FBC2EB;
+    --bg-gradient-2: #A6C1EE;
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --shadow-soft: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, var(--bg-gradient-1) 0%, var(--bg-gradient-2) 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Mencegah scrollbar muncul saat tombol lari ke ujung layar */
+    color: var(--text-main);
+}
+
+.glass-container {
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 40px 30px;
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+    z-index: 10;
+}
+
+.icon-wrapper {
+    margin-bottom: 20px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-main);
+}
+
+.subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    line-height: 1.5;
+}
+
+.question {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 24px;
+}
+
+.button-group {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    min-height: 50px;
+    position: relative;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+    outline: none;
+}
+
+.btn:active {
+    transform: scale(0.92);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 71, 126, 0.35);
+    flex: 1;
+    max-width: 180px;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    box-shadow: 0 6px 20px rgba(255, 71, 126, 0.45);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: #F1F5F9;
+    color: var(--text-muted);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    z-index: 9999; /* Memastikan tombol Tidak selalu di atas saat bergerak */
+}
+
+.hidden {
+    display: none;
+}
+
+.success-title {
+    color: var(--primary-color);
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.success-text {
+    font-size: 15px;
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+.heart-animation {
+    font-size: 40px;
+    margin-top: 20px;
+    animation: beat 1s infinite alternate;
+}
+
+/* Animasi Bawaan */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes beat {
+    from { transform: scale(1); }
+    to { transform: scale(1.2); }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

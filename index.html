@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Awa</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="glass-container">
+        <div class="card">
+            <div class="icon-wrapper">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" fill="#FF477E"/>
+                </svg>
+            </div>
+            
+            <h1 class="title">Halo, Awa</h1>
+            <p class="subtitle">Ada hal yang mau aku tanyain.</p>
+            
+            <div class="question-section" id="question-section">
+                <h2 class="question">Kamu sayang aku engga?</h2>
+                <div class="button-group">
+                    <button id="btn-yes" class="btn btn-primary">Iya, banget! Super Duper iyaa! </button>
+                    <button id="btn-no" class="btn btn-secondary">Engga</button>
+                </div>
+            </div>
+
+            <div id="success-message" class="hidden">
+                <h2 class="success-title">Yeayyy!</h2>
+                <p class="success-text">Aku juga sayang banget sama kamu! Nanti kita cari makan bareng ya di balam</p>
+                <div class="heart-animation"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const btnNo = document.getElementById('btn-no');
+        const btnYes = document.getElementById('btn-yes');
+        const questionSection = document.getElementById('question-section');
+        const successMessage = document.getElementById('success-message');
+
+        // Logika agar tombol "Tidak" kabur
+        btnNo.addEventListener('mouseover', moveButton);
+        btnNo.addEventListener('touchstart', moveButton); // Supaya tetap kabur di HP
+
+        function moveButton(e) {
+            e.preventDefault();
+            
+            // Mengambil ukuran layar penuh
+            const maxX = window.innerWidth - btnNo.offsetWidth - 20;
+            const maxY = window.innerHeight - btnNo.offsetHeight - 20;
+            
+            // Posisi acak dengan batas aman
+            const randomX = Math.max(20, Math.floor(Math.random() * maxX));
+            const randomY = Math.max(20, Math.floor(Math.random() * maxY));
+
+            btnNo.style.position = 'fixed';
+            btnNo.style.left = `${randomX}px`;
+            btnNo.style.top = `${randomY}px`;
+            btnNo.style.transition = 'all 0.2s ease-out';
+        }
+
+        // Logika saat tombol "Iya" ditekan
+        btnYes.addEventListener('click', () => {
+            questionSection.style.display = 'none';
+            btnNo.style.display = 'none';
+            successMessage.classList.remove('hidden');
+            successMessage.classList.add('fade-in');
+        });
+    </script>
+</body>
+</html>
